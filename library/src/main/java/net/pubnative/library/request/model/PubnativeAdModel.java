@@ -797,8 +797,9 @@ public class PubnativeAdModel implements PubnativeImpressionTracker.Listener,
         Log.v(TAG, "hideLoadingView");
         if (getRootView() == null) {
             Log.w(TAG, "hideLoadingView - Error: impossible to retrieve root view");
-        } else {
-            getRootView().removeView(getLoadingView());
+        }
+        if (getLoadingView().getParent()!=null){
+            ((ViewGroup)getLoadingView().getParent()).removeView(getLoadingView());
         }
     }
 
